@@ -1,0 +1,25 @@
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 18rem;
+  gap: 60px;
+  background: linear-gradient(rgba(5, 7, 12, 0.75), rgba(5, 7, 12, 0.75));
+  border-radius: 50px;
+  margin-top: 4rem;
+  padding:3rem ;
+  width: 60rem;
+box-shadow: 14px 5px 10px 1px rgb(216, 45, 202);
+  
+}
+
+.img{
+  width: 350px;
+  height: 350px;
+  border-radius: 30px;
+}
+
+
+.detail h1 {
+  padding-bottom: 3rem;
+}

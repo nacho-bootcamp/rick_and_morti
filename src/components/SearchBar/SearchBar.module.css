@@ -1,0 +1,17 @@
+.box input{
+  border: 0px;
+  border-radius: 15px 0px 0px 15px;
+  background-color: #dc0fa2;
+  height: 3em;
+  width: 314px;
+}
+.box button{
+  border: 0px;
+  border-radius: 0px 15px 15px 0px;
+  background-color:rgba(206, 8, 224, 0.75);
+  height: 3em;
+
+}
+.box {
+width: 380px; 
+}
