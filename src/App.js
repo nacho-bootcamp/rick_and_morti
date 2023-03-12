@@ -3,15 +3,33 @@ import Cards from "./components/Cards/Cards.jsx";
 import Nav from "./components/Nav/Nav";
 import About from "./components/About/About";
 import Detail from "./components/Detail/Detail";
+import { Form } from "./components/Form/Form";
 
-import { useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 
 function App() {
   const [characters, setCharacters] = useState([]);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [access, setAccess] = useState(false);
+
+  const username = "ignacio@gmail.com";
+  const password = "1password";
+
+  const login = (userData) => {
+    if (username === userData.username && password === userData.password) {
+      setAccess(true);
+      navigate("/home");
+    }
+  };
+
+  useEffect(() => {
+    !access && navigate("/");
+  }, [access]);
 
   const URL_BASE = "https://be-a-rym.up.railway.app/api";
-  const KEY = "831c4597aaa4.c1c7bf7f3200751b57bf ";
+  const KEY = "831c4597aaa4.c1c7bf7f3200751b57bf";
 
   const onSearch = (character) => {
     fetch(`${URL_BASE}/character/${character}?key=${KEY}`)
@@ -31,7 +49,12 @@ function App() {
 
   return (
     <div className="App" style={{ padding: "25px" }}>
-      <Nav onSearch={onSearch} />
+      {location.pathname === "/" ? (
+        <Form login={login} />
+      ) : (
+        <Nav onSearch={onSearch} />
+      )}
+
       <Routes>
         <Route
           path="/home"

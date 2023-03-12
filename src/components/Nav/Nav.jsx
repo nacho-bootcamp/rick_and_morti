@@ -6,13 +6,15 @@ import { Link } from "react-router-dom";
 const Nav = ({ onSearch }) => {
   return (
     <div className={styles.nav}>
-      <Link to="/about" className={styles.link}>
-        About
-      </Link>
+      <div className={styles.link}>
+        <Link to="/about" className={styles.sublink}>
+          About
+        </Link>
+        <Link to="/home" className={styles.sublink}>
+          Home
+        </Link>
+      </div>
       <SearchBar onSearch={onSearch} />
-      <Link to="/home" className={styles.link}>
-        Home
-      </Link>
     </div>
   );
 };

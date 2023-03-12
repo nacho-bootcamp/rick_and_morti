@@ -1,19 +1,29 @@
 .nav{
-   background:linear-gradient(rgba(8, 69, 224, 0.75),rgba(5, 7, 12,0.75));
+   background:linear-gradient(rgba(36, 37, 37, 0.75),rgba(5, 7, 12,0.75));
    padding-top: 30px;
    padding-bottom: 30px;
    display: flex;
-   flex-direction: row;
    justify-content: space-around;
-   text-align: center;
-}
-.link{
-color: white;
-text-decoration: none;
-padding-top: 10px;
-font-size: 25px;
-}
-.link:hover{
-   text-shadow: 4px 8px 4px #050505;
+  align-items: center;
  
 }
+
+.link{
+   display: flex;
+   gap: 10rem;
+   
+}
+ 
+.sublink{
+   position: relative;
+   text-decoration: none;
+   color: white;
+   font-size: 18px;
+   letter-spacing: .5px;
+   padding: 0 20px;
+   cursor: pointer;
+}
+
+
+
+ 

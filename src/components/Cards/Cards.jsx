@@ -7,6 +7,7 @@ const Cards = ({ characters, onClose }) => {
       {characters.map(({ id, name, species, gender, image }) => {
         return (
           <Card
+            className={styles.card}
             key={id}
             name={name}
             species={species}
