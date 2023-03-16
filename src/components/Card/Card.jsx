@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import styles from "./Card.module.css";
 import { connect } from "react-redux";
 import { agregarPersonaje, deleteCharacter } from "../../redux/action/actions";
-import { useDispatch } from "react-redux";
 
 const Card = ({
   id,
@@ -18,28 +17,22 @@ const Card = ({
 }) => {
   const [isFav, setIsFav] = useState(false);
 
-  const dispatch = useDispatch();
-
   const handleFavorite = () => {
-    if (isFav === true) {
-      return setIsFav(false), dispatch(deleteCharacter(id));
-    }
-    if (isFav === false) {
-      return (
-        setIsFav(true),
-        dispatch(
-          agregarPersonaje(
-            id,
-            name,
-            species,
-            gender,
-            image,
-            onClose,
-            agregarPersonaje,
-            deleteCharacter
-          )
-        )
-      );
+    if (isFav) {
+      setIsFav(false);
+      deleteCharacter(id);
+    } else {
+      setIsFav(true);
+      agregarPersonaje({
+        id,
+        name,
+        species,
+        gender,
+        image,
+        onClose,
+        agregarPersonaje,
+        deleteCharacter,
+      });
     }
   };
 
@@ -49,7 +42,7 @@ const Card = ({
         setIsFav(true);
       }
     });
-  }, [myFavorites]);
+  }, [id, myFavorites]);
 
   return (
     <div className={styles.card}>
