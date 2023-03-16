@@ -11,7 +11,7 @@ const SearchBar = ({ onSearch }) => {
   return (
     <div className={style.box}>
       <input type="search" value={character} onChange={handlerChange} />
-      <button onClick={() => onSearch(character)}>Agregar</button>
+      <button onClick={() => onSearch(character)}>Buscar</button>
     </div>
   );
 };

@@ -1,8 +1,56 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Card.module.css";
+import { connect } from "react-redux";
+import { agregarPersonaje, deleteCharacter } from "../../redux/action/actions";
+import { useDispatch } from "react-redux";
 
-const Card = ({ id, name, species, gender, image, onClose }) => {
+const Card = ({
+  id,
+  name,
+  species,
+  gender,
+  image,
+  onClose,
+  agregarPersonaje,
+  deleteCharacter,
+  myFavorites,
+}) => {
+  const [isFav, setIsFav] = useState(false);
+
+  const dispatch = useDispatch();
+
+  const handleFavorite = () => {
+    if (isFav === true) {
+      return setIsFav(false), dispatch(deleteCharacter(id));
+    }
+    if (isFav === false) {
+      return (
+        setIsFav(true),
+        dispatch(
+          agregarPersonaje(
+            id,
+            name,
+            species,
+            gender,
+            image,
+            onClose,
+            agregarPersonaje,
+            deleteCharacter
+          )
+        )
+      );
+    }
+  };
+
+  useEffect(() => {
+    myFavorites.forEach((fav) => {
+      if (fav.id === id) {
+        setIsFav(true);
+      }
+    });
+  }, [myFavorites]);
+
   return (
     <div className={styles.card}>
       <div className={styles.containerBtn}>
@@ -17,8 +65,26 @@ const Card = ({ id, name, species, gender, image, onClose }) => {
         </Link>
         <h2>{species}</h2>
         <h2>{gender}</h2>
+        {isFav ? (
+          <button onClick={handleFavorite}>❤️</button>
+        ) : (
+          <button onClick={handleFavorite}>🤍</button>
+        )}
       </div>
     </div>
   );
 };
-export default Card;
+const mapStateToProps = (state) => {
+  return {
+    myFavorites: state.myFavorites,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    agregarPersonaje: (character) => dispatch(agregarPersonaje(character)),
+    deleteCharacter: (id) => dispatch(deleteCharacter(id)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Card);

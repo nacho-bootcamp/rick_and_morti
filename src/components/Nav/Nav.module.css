@@ -1,7 +1,7 @@
 .nav{
    background:linear-gradient(rgba(36, 37, 37, 0.75),rgba(5, 7, 12,0.75));
-   padding-top: 30px;
-   padding-bottom: 30px;
+   padding-top: 20px;
+   padding-bottom: 20px;
    display: flex;
    justify-content: space-around;
   align-items: center;
@@ -11,9 +11,9 @@
 .link{
    display: flex;
    gap: 10rem;
-   
 }
- 
+
+
 .sublink{
    position: relative;
    text-decoration: none;
@@ -24,6 +24,10 @@
    cursor: pointer;
 }
 
+.sublink:hover{
+   background-color: blueviolet;
+   border-radius: 50px;
+}
 
 
  

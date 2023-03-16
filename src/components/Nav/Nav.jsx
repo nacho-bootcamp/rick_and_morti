@@ -13,6 +13,9 @@ const Nav = ({ onSearch }) => {
         <Link to="/home" className={styles.sublink}>
           Home
         </Link>
+        <Link to=" /favorites" className={styles.sublink}>
+          Favorites
+        </Link>
       </div>
       <SearchBar onSearch={onSearch} />
     </div>

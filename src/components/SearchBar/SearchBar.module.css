@@ -1,7 +1,6 @@
 .box input{
-  border: 0px;
   border-radius: 15px 0px 0px 15px;
-  background-color: #dc0fa2;
+  background-color: rgba(225, 0, 255, 0.5);
   height: 3em;
   width: 314px;
 }
