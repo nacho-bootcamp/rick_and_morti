@@ -47,6 +47,11 @@ const Card = ({
   return (
     <div className={styles.card}>
       <div className={styles.containerBtn}>
+         {isFav ? (
+          <button onClick={handleFavorite}>❤️</button>
+        ) : (
+          <button onClick={handleFavorite}>🤍</button>
+        )}
         <button className={styles.boton} onClick={onClose}>
           X
         </button>
@@ -58,11 +63,7 @@ const Card = ({
         </Link>
         <h2>{species}</h2>
         <h2>{gender}</h2>
-        {isFav ? (
-          <button onClick={handleFavorite}>❤️</button>
-        ) : (
-          <button onClick={handleFavorite}>🤍</button>
-        )}
+       
       </div>
     </div>
   );

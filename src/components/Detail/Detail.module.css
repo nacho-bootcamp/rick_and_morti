@@ -22,4 +22,9 @@ box-shadow: 14px 5px 10px 1px rgb(216, 45, 202);
 
 .detail h1 {
   padding-bottom: 3rem;
+  
+}
+
+.detail{
+  color: white;
 }

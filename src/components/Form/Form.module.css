@@ -58,7 +58,7 @@ box-shadow: 0 8px 8px 0 #f60acb, 0 8px 8px 0 #ec09c3
   background: transparent;
   border: none;
   outline: none;
-  color: black;
+  color: white;
   font-size: 1em;
   letter-spacing: 0.05em;
   z-index: 10;
@@ -112,6 +112,7 @@ box-shadow: 0 8px 8px 0 #f60acb, 0 8px 8px 0 #ec09c3
   border-radius: 8px;
   font-weight: 600px;
   cursor: pointer;
+  color: white;
 }
 
 .button :active {

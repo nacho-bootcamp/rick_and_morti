@@ -47,7 +47,7 @@ export const Form = ({ login }) => {
             <label htmlFor="username"> Username:</label>
             <i></i>
           </div>
-          {errors.username && <p>{errors.username}</p>}
+          {errors.username && <p style={{ color: "red" }} >{errors.username}</p>}
           <div className={style.inputBox}>
             <input
               required="required"

@@ -3,12 +3,14 @@
   background-color: rgba(225, 0, 255, 0.5);
   height: 3em;
   width: 314px;
+  color: white;
 }
 .box button{
   border: 0px;
   border-radius: 0px 15px 15px 0px;
   background-color:rgba(206, 8, 224, 0.75);
   height: 3em;
+  color: white;
 
 }
 .box {
