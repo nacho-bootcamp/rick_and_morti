@@ -1,0 +1,78 @@
+.card {
+  border: solid 2px rgb(238, 45, 203);
+  width: fit-content;
+  background: linear-gradient(rgb(232, 38, 222), rgb(63, 62, 62,0.5));
+  border-radius: 20px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  padding: 5px;
+}
+.card{
+  animation: myAnim 1s ease 0s 1 normal forwards;
+}
+@keyframes myAnim {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+
+.card:hover {
+  box-shadow: 1px 1px 25px rgba(223, 15, 220, 0.916), 0 6px 20px;
+}
+
+.img {
+  border-radius: 20px;
+  width: auto;
+  
+}
+
+.containerBtn {
+  display: flex;
+justify-content: space-between;
+  border-radius: 30px;
+ margin-bottom: 5px;
+
+}
+
+
+
+.boton {
+  background-color: red;
+  color: white;
+  border-radius: 20%;
+  
+
+}
+
+.boton:hover {
+  box-shadow: 4px 2px 30px red;
+}
+
+.info {
+  text-align: center;
+  
+}
+
+.link{
+  text-decoration: none;
+  color:white ;
+  
+}
+.link:hover{
+  color: blue;
+}
+
+.name {
+  background-color: red;
+  top: 88px;
+  font-size: 1002px;
+}
+
+.card{
+  color: white;
+}
