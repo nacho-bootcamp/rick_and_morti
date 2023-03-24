@@ -1,7 +1,13 @@
-import { AGREGAR_PERSONAJE, DELETE_CHARACTER } from "./action/types";
+import {
+  AGREGAR_PERSONAJE,
+  DELETE_CHARACTER,
+  FILTER,
+  ORDER,
+} from "./action/types";
 
 const initialState = {
   myFavorites: [],
+  allCharacters: [],
 };
 
 const rootReducer = (state = initialState, actions) => {
@@ -9,7 +15,8 @@ const rootReducer = (state = initialState, actions) => {
     case AGREGAR_PERSONAJE:
       return {
         ...state,
-        myFavorites: [...state.myFavorites, actions.payload],
+        myFavorites: [...state.allCharacters, actions.payload],
+        allCharacters: [...state.allCharacters, actions.payload],
       };
 
     case DELETE_CHARACTER:
@@ -19,6 +26,24 @@ const rootReducer = (state = initialState, actions) => {
       return {
         ...state,
         myFavorites: filtChar,
+      };
+
+    case FILTER:
+      const allCharactersFilt = state.allCharacters.filter(
+        (chara) => chara.gender === actions.payload
+      );
+      return {
+        ...state,
+        myFavorites: [allCharactersFilt],
+      };
+
+    case ORDER:
+      return {
+        ...state,
+        myFavorites:
+          actions.payload === "Ascendente"
+            ? state.allCharacters.sort((a, b) => a.id - b.id)
+            : [...state.allCharacters].sort((a, b) => b.id - a.id),
       };
 
     default:

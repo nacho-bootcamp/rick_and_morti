@@ -1,4 +1,4 @@
-import { AGREGAR_PERSONAJE, DELETE_CHARACTER, FILTER } from "./types";
+import { AGREGAR_PERSONAJE, DELETE_CHARACTER, FILTER, ORDER } from "./types";
 
 export const agregarPersonaje = (character) => {
   return {
@@ -23,7 +23,7 @@ export const filterCards = (status) => {
 
 export const orderCards = (id) => {
   return {
-    type: "ORDER",
+    type: ORDER,
     payload: id,
   };
 };

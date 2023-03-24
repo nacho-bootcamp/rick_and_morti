@@ -29,10 +29,9 @@ function App() {
     !access && navigate("/");
   }, [access]);
 
-  const URL_BASE = "https://be-a-rym.up.railway.app/api";
-  const KEY = "831c4597aaa4.c1c7bf7f3200751b57bf";
-
   const onSearch = (character) => {
+    const URL_BASE = "https://be-a-rym.up.railway.app/api";
+    const KEY = "831c4597aaa4.c1c7bf7f3200751b57bf";
     fetch(`${URL_BASE}/character/${character}?key=${KEY}`)
       .then((response) => response.json())
       .then((data) => {
