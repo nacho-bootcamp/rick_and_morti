@@ -1,19 +1,19 @@
 const axios = require("axios");
+const { KEY, URL } = process.env;
 
-const getCharDetail = (res, id) => {
+const URL_BASE = "https://rickandmortyapi.com/api/character/";
+
+const getCharDetail = (req, res) => {
+  const { id } = req.params;
   axios
-    .get(`https://rickandmortyapi.com/api/character/${id}`)
-    .then((response) => {
-      const { name, gender, status, origin, species } = response.data;
-      res.writeHead(200, { "Content-Type": " text/plain" });
-      res.end(JSON.stringify({ name, gender, status, origin, species }));
+    .get(`${URL_BASE}/${id}`)
+    .then((res) => {
+      const { id, name, species, image, gender, origin } = response.data;
+      res.status(200).json({ id, name, species, image, gender, origin });
     })
-    .catch((err) => {
-      res.writeHead(500, { "Content-Type": "text/plain" }),
-        res.end(`el personaje con el ${id} no se a encontrado`);
+    .catch((error) => {
+      res.status(400).json({ error: error.message });
     });
 };
 
-module.exports = {
-  getCharDetail,
-};
+module.export = getCharDetail;
