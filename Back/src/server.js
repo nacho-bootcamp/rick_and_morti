@@ -1,38 +1,19 @@
-//const http = require("http");
-//const data = require("./utils/data");
+require("dotenv").config();
+const express = require("express");
+const router = require("./routes");
+const morgan = require("morgan");
+const cors = require("cors");
 
-//const PORT = 3001;
-//http
-//.createServer((res, req) => {
-//res.setHeader("Access-Control-Allow-Origin", "*");
-//if (req.url.include(" rickandmorty/character")) {
-//let id = req.url.split("/").at(-1);
-//let character = data.filter((char) => char.id === Number(id));
-// cuando se hagarra datos de la url todos esos datos son string si yo quiero un numero hay que parsearlo
-//res.writeHead(200, { "Content-Type": "application/json" }),
-//res.end(JSON.stringify(character));
-//  }
-//})
-//.listen(PORT, "localhost");
+const PORT = process.env.PORT || 3001;
 
-const http = require("http");
-const { getCharById } = require("./controllers/getCharById");
-const { getCharDetail } = require("./controllers/getCharDetail");
-const PORT = 3001;
+const server = express();
 
-http
-  .createServer((req, res) => {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    const { url } = req;
+server.use(express.json());
+server.use(morgan("dev"));
+server.use(cors());
 
-    if (url.includes("onsearch")) {
-      const id = url.split("/").at(-1);
-      getCharById(res, id);
-    }
+server.use("/", router);
 
-    if (url.includes("detail")) {
-      const id = url.split("/").at(-1);
-      getCharDetail(res, id);
-    }
-  })
-  .listen(PORT, "localhost");
+server.listen(PORT, () => {
+  console.log(`Listening on port ${PORT}`);
+});

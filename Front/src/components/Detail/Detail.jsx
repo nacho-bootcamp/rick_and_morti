@@ -3,13 +3,12 @@ import { useParams } from "react-router-dom";
 import style from "./Detail.module.css";
 
 const Detail = () => {
-  const URL_BASE = "https://be-a-rym.up.railway.app/api";
-  const KEY = "831c4597aaa4.c1c7bf7f3200751b57bf ";
+  const URL_BASE = "https://localhost:3001/rickandmorty";
 
   const { detailId } = useParams();
   const [character, setCharacter] = useState({});
   useEffect(() => {
-    fetch(`${URL_BASE}/character/${detailId}?key=${KEY}`)
+    fetch(`${URL_BASE}/detail/${detailId}`)
       .then((response) => response.json())
       .then((char) => {
         if (char.name) {
