@@ -1,5 +1,6 @@
 require("dotenv").config();
 const express = require("express");
+
 const router = require("./routes");
 const morgan = require("morgan");
 const cors = require("cors");
@@ -16,4 +17,6 @@ server.use("/", router);
 
 server.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
+
+
 });

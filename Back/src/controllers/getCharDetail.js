@@ -1,4 +1,5 @@
 const axios = require("axios");
+
 const { KEY, URL_BASE } = process.env;
 
 const getCharDetail = (req, res) => {
@@ -11,6 +12,7 @@ const getCharDetail = (req, res) => {
       res.status(200).json({ id, name, species, image, gender, origin });
     })
     .catch((error) => {
+
       res.status(404).json({ error: error.message });
     });
 };
