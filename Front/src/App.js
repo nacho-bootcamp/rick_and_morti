@@ -7,23 +7,16 @@ import { Form } from "./components/Form/Form";
 
 import { useEffect, useState } from "react";
 import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
-import Favorites from "./components/Favorites/Favorites";
+import Favorites from "./components/Favorites/Favorites.jsx";
 
 function App() {
   const [characters, setCharacters] = useState([]);
   const location = useLocation();
-  const navigate = useNavigate();
   const [access, setAccess] = useState(false);
+  const navigate = useNavigate();
 
   const username = "ignacio@gmail.com";
   const password = "1password";
-
-  const login = (userData) => {
-    if (username === userData.username && password === userData.password) {
-      setAccess(true);
-      navigate("/home");
-    }
-  };
 
   useEffect(() => {
     !access && navigate("/");
@@ -37,7 +30,7 @@ function App() {
       return alert("personaje repetido");
     }
 
-    fetch(`${URL_BASE}/onsearch${id}`)
+    fetch(`${URL_BASE}/onsearch/${id}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.name) {
@@ -46,6 +39,12 @@ function App() {
           alert("ocurrio un error");
         }
       });
+  };
+  const login = (userData) => {
+    if (username === userData.username && password === userData.password) {
+      setAccess(true);
+      navigate("/home");
+    }
   };
 
   const onClose = (id) => {
