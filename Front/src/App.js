@@ -7,44 +7,40 @@ import { Form } from "./components/Form/Form";
 
 import { useEffect, useState } from "react";
 import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
-import Favorites from "./components/Favorites/Favorites.jsx";
+import Favorites from "./components/Favorites/Favorites";
 
 function App() {
   const [characters, setCharacters] = useState([]);
   const location = useLocation();
-  const [access, setAccess] = useState(false);
   const navigate = useNavigate();
+  const [access, setAccess] = useState(false);
 
   const username = "ignacio@gmail.com";
   const password = "1password";
 
-  useEffect(() => {
-    !access && navigate("/");
-  }, [access]);
-
-  const onSearch = (id) => {
-    const URL_BASE = "http://localhost:3001";
-    // const KEY = "831c4597aaa4.c1c7bf7f3200751b57bf";
-
-    if (characters.find((char) => char.id === id)) {
-      return alert("personaje repetido");
-    }
-
-    fetch(`${URL_BASE}/onsearch/${id}`)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.name) {
-          setCharacters((oldChars) => [...oldChars, data]);
-        } else {
-          alert("ocurrio un error");
-        }
-      });
-  };
   const login = (userData) => {
     if (username === userData.username && password === userData.password) {
       setAccess(true);
       navigate("/home");
     }
+  };
+
+  useEffect(() => {
+    !access && navigate("/");
+  }, [access]);
+
+  const onSearch = (character) => {
+    const URL_BASE = "https://be-a-rym.up.railway.app/api";
+    const KEY = "831c4597aaa4.c1c7bf7f3200751b57bf";
+    fetch(`${URL_BASE}/character/${character}?key=${KEY}`)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.name && !characters.find((char) => char.id === data.id)) {
+          setCharacters((oldChars) => [...oldChars, data]);
+        } else {
+          window.alert("ocurrio un error");
+        }
+      });
   };
 
   const onClose = (id) => {

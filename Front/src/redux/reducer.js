@@ -3,15 +3,11 @@ import {
   DELETE_CHARACTER,
   FILTER,
   ORDER,
-  GET_FAVORITES,
-  CLEAN_DETAIL,
-  GET_CHARACTER_DETAIL,
 } from "./action/types";
 
 const initialState = {
   myFavorites: [],
   allCharacters: [],
-  characterDetail: {},
 };
 
 const rootReducer = (state = initialState, actions) => {
@@ -49,20 +45,6 @@ const rootReducer = (state = initialState, actions) => {
             ? state.allCharacters.sort((a, b) => a.id - b.id)
             : [...state.allCharacters].sort((a, b) => b.id - a.id),
       };
-    case GET_CHARACTER_DETAIL:
-      return {
-        ...state,
-        characterDetail: actions.payload,
-      };
-
-    case CLEAN_DETAIL:
-      return {
-        ...state,
-        characterDetail: {},
-      };
-
-    case GET_FAVORITES:
-      return { ...state, myFavorites: actions.payload };
 
     default:
       return { ...state };

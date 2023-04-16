@@ -2,7 +2,7 @@ import React from "react";
 import { connect, useDispatch } from "react-redux";
 import styles from "./Favorite.module.css";
 
-import { Link } from "react-router-dom";
+import Card from "../Card/Card";
 import { filterCards, orderCards } from "../../redux/action/actions";
 
 const Favorites = ({ myFavorites }) => {
@@ -37,16 +37,15 @@ const Favorites = ({ myFavorites }) => {
       <div className={styles.container}>
         {myFavorites.map(({ id, name, species, gender, image }) => {
           return (
-            <div key={id} className={styles.card}>
-              <img className={styles.img} src={image} alt={name} />
-              <div className={styles.info}>
-                <Link className={styles.link} to={`/detail/${id}`}>
-                  <h2>{name}</h2>
-                </Link>
-                <h2>{species}</h2>
-                <h2>{gender}</h2>
-              </div>
-            </div>
+            <Card
+              className={styles.card}
+              key={id}
+              name={name}
+              species={species}
+              gender={gender}
+              image={image}
+              id={id}
+            />
           );
         })}
       </div>
